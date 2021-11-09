@@ -1,0 +1,82 @@
+
+//Inisialisasi pembuatan variable
+//untuk tombol
+int tombol1 =2;
+int tombol2 =3;
+int tombol3 =4;
+//untuk led
+int LED1    =5;
+int LED2    =6;
+int LED3    =7;
+
+int kunci1;
+int kunci2;
+int kunci3;
+
+void setup() {
+  //Menentukan Fungsionalitas dari PIN pada Microcontroller
+  Serial.begin(9600);
+  pinMode(tombol1,INPUT);
+  pinMode(LED1,OUTPUT);
+  pinMode(tombol2,INPUT);
+  pinMode(LED2,OUTPUT);
+  pinMode(tombol3,INPUT);
+  pinMode(LED3,OUTPUT);
+
+}
+
+void loop() {
+  //Program yang akan dijalankan berulang ulang
+  int bacaTombol1=digitalRead(tombol1);//Membaca keadaan tombol 1
+  int bacaTombol2=digitalRead(tombol2);//Membaca keadaan tombol 2
+  int bacaTombol3=digitalRead(tombol3);//Membaca keadaan tombol 3
+
+  //Print Serial
+  Serial.print(" | Kondisi Tombol 1:"); Serial.print(bacaTombol1);
+  Serial.print(" | Kondisi Tombol 2:"); Serial.print(bacaTombol2);
+  Serial.print(" | Kondisi Tombol 3:"); Serial.print(bacaTombol3);
+  Serial.println();
+  
+
+  //Logika program (Jika tombol membaca nilai 1 maka LED menyala, jika bukan 1 maka mati
+  
+  //Start Tombol 1
+  if (bacaTombol1==0 && kunci1==0){ 
+    delay(500);
+    Serial.println("LED ON");
+    digitalWrite(LED1,HIGH);
+    kunci1=1; 
+    }else if(bacaTombol1==0 && kunci1==1){
+    delay(500);
+    Serial.println("LED OFF");
+    digitalWrite(LED1,LOW);
+    kunci1=0;
+  }
+//
+//  if (bacaTombol2==1 && kunci2==0){ 
+//    delay(100);
+//    Serial.println("LED ON");
+//    digitalWrite(LED2,HIGH);
+//    kunci2=1; 
+//    }
+    /*
+    else if(bacaTombol2==1 && kunci2==1){
+    delay(100);
+    Serial.println("LED OFF");
+    digitalWrite(LED2,LOW);
+    kunci2=0;
+  }
+
+  if (bacaTombol3==1 && kunci3==0){ 
+    delay(100);
+    Serial.println("LED ON");
+    digitalWrite(LED3,HIGH);
+    kunci3=1; 
+    }else if(bacaTombol3==1 && kunci3==1){
+    delay(100);
+    Serial.println("LED OFF");
+    digitalWrite(LED3,LOW);
+    kunci3=0;
+  }
+  */
+}
